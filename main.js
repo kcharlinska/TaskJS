@@ -97,7 +97,25 @@ fetch('https://www.reddit.com/r/funny.json')
             createPost(topPost);
         }
 
-        document.querySelector('.btn-top').addEventListener('click', pickTopPost)
+        const sortLastDay = () => {
+            const actualDate = new Date()
+            console.log(actualDate);
+            const previousDay = actualDate - 60 * 60 * 24 * 1000;
+            console.log(previousDay);
+            console.log(new Date(previousDay));
+            const freshPosts = postsData.posts.filter((item) => {
+                return item.created > previousDay;
+            })
+            console.log(freshPosts);
+            cleanData(document.querySelector('.posts-wrapper'));
+            showPosts(freshPosts);
+        }
+
+
+
+
+        document.querySelector('.btn-top').addEventListener('click', pickTopPost);
+        document.querySelector('.btn-lastDay').addEventListener('click', sortLastDay);
 
     })
     .catch(error => {
