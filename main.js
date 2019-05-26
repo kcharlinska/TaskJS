@@ -25,32 +25,33 @@ fetch('https://www.reddit.com/r/funny.json')
         postsData.count = postsData.posts.length;
         console.log(postsData);
 
-        const showPosts = () => {
-            postsData.posts.forEach(item => {
-                const post = document.createElement('article');
-                document.querySelector('.posts-wrapper').appendChild(post);
-                post.className = 'post';
-                const date = document.createElement('div');
-                post.appendChild(date);
-                date.className = 'date';
-                date.textContent = item.created;
-                const upvotes = document.createElement('div');
-                post.appendChild(upvotes);
-                upvotes.className = 'upvotes';
-                upvotes.textContent = `${item.upvotes} upvotes`;
-                const txt = document.createElement('div');
-                post.appendChild(txt);
-                txt.className = 'txt';
-                txt.textContent = item.title;
-                const comments = document.createElement('div');
-                post.appendChild(comments);
-                comments.className = 'comments';
-                comments.textContent = `${item.num_comments} comments`;
-                const score = document.createElement('div');
-                post.appendChild(score);
-                score.className = 'score';
-                score.textContent = `${item.score} score`;
-            })
+        const createPost = (item) => {
+            const post = document.createElement('article');
+            document.querySelector('.posts-wrapper').appendChild(post);
+            post.className = 'post';
+            const date = document.createElement('div');
+            post.appendChild(date);
+            date.className = 'date';
+            date.textContent = item.created;
+            const upvotes = document.createElement('div');
+            post.appendChild(upvotes);
+            upvotes.className = 'upvotes';
+            upvotes.textContent = `${item.upvotes} upvotes`;
+            const txt = document.createElement('div');
+            post.appendChild(txt);
+            txt.className = 'txt';
+            txt.textContent = item.title;
+            const comments = document.createElement('div');
+            post.appendChild(comments);
+            comments.className = 'comments';
+            comments.textContent = `${item.num_comments} comments`;
+            const score = document.createElement('div');
+            post.appendChild(score);
+            score.className = 'score';
+            score.textContent = `${item.score} score`;
+        }
+        const showPosts = (el) => {
+            el.forEach(item => createPost(item))
         }
 
         const getSortedData = (prop) => {
@@ -67,7 +68,7 @@ fetch('https://www.reddit.com/r/funny.json')
                 // element.forEach(item => item.parentNode.removeChild(element))
             }
         }
-        showPosts();
+        showPosts(postsData.posts);
 
 
         // let prop = document.querySelector('.upvotes').className;
@@ -78,12 +79,25 @@ fetch('https://www.reddit.com/r/funny.json')
                 e.preventDefault();
                 console.log(item.className);
                 getSortedData(`${item.className}`);
-                document.querySelector('.posts-wrapper').innerHTML = '';
-                // cleanData(document.querySelector('.posts-wrapper'));
-                showPosts();
+                // document.querySelector('.posts-wrapper').innerHTML = '';
+                cleanData(document.querySelector('.posts-wrapper'));
+                showPosts(postsData.posts);
                 toggleSubMenu();
             })
         })
+        const pickTopPost = () => {
+            postsData.posts.forEach(item => {
+                item.ratio = item.upvotes / item.num_comments
+            })
+            const topPost = postsData.posts.reduce((prev, current) => {
+                return prev.ratio > current.ratio ? prev : current;
+            })
+            console.log(topPost);
+            cleanData(document.querySelector('.posts-wrapper'));
+            createPost(topPost);
+        }
+
+        document.querySelector('.btn-top').addEventListener('click', pickTopPost)
 
     })
     .catch(error => {
@@ -91,6 +105,8 @@ fetch('https://www.reddit.com/r/funny.json')
             alert("Something goes wrong :( Please try again later")
         }
     })
+
+
 
 const toggleSubMenu = () => {
     document.querySelector('.options').classList.toggle('show');
