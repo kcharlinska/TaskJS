@@ -1,0 +1,20 @@
+.app {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: $app-bgc;
+
+    .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: $menu-height;
+        background-color: $menu-bgc;
+    }
+
+    .post-wrapper {
+        margin-top: $menu-height;
+        width: 100%;
+        height: 100%;
+    }
+}
