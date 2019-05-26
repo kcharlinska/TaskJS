@@ -24,6 +24,32 @@ fetch('https://www.reddit.com/r/funny.json')
         });
         postsData.count = postsData.posts.length;
         console.log(postsData);
+
+        postsData.posts.forEach(item => {
+            const post = document.createElement('article');
+            document.querySelector('.posts-wrapper').appendChild(post);
+            post.className = 'post';
+            const date = document.createElement('div');
+            post.appendChild(date);
+            date.className = 'date';
+            date.textContent = item.created;
+            const upvotes = document.createElement('div');
+            post.appendChild(upvotes);
+            upvotes.className = 'upvotes';
+            upvotes.textContent = `${item.upvotes} upvotes`;
+            const txt = document.createElement('div');
+            post.appendChild(txt);
+            txt.className = 'txt';
+            txt.textContent = item.title;
+            const comments = document.createElement('div');
+            post.appendChild(comments);
+            comments.className = 'comments';
+            comments.textContent = `${item.num_comments} comments`;
+            const score = document.createElement('div');
+            post.appendChild(score);
+            score.className = 'score';
+            score.textContent = `${item.score} score`;
+        })
     })
     .catch(error => {
         if (error.status === 404) {
