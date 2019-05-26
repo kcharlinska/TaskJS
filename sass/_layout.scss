@@ -40,3 +40,35 @@
     }
 
 }
+
+.btn {
+    height: 100%;
+    width: calc(100% / 4);
+    font-size: 1rem;
+    text-transform: uppercase;
+    border: none;
+    background-color: inherit;
+}
+
+.options {
+    display: none;
+    position: absolute;
+    top: $menu-height;
+    left: 0;
+    background-color: inherit;
+    font-size: .9rem;
+}
+
+.show {
+    display: block;
+}
+
+.options li {
+    padding: 5px 10px;
+}
+
+.options a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $font-color;
+}
