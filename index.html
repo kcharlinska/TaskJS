@@ -6,21 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Zadanie_JS</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <main class="app">
         <nav class='menu'>
-            <button class="btn btn-sort">Sort by</button>
-            <ul class="options">
-                <li><a class="upvotes" href="">Upvotes</a></li>
-                <li><a class="num_comments" href="">Comments</a></li>
-                <li><a class="score" href="">Score</a></li>
-                <li><a class="created" href="">Date</a></li>
+            <ul class="menu-wrapper">
+                <li><a class="btn btn-home" href=""><span class="fas fa-home"></span></a></li>
+                <li><a class="btn btn-top" href="">Top</a></li>
+                <li><a class="btn btn-lastDay" href="">Past 24h</a></li>
+                <li><a class="btn btn-sort" href="">Sort by <span class="fas fa-caret-down"></s></a>
+                    <ul class="options">
+                        <li><a class="upvotes" href="">Upvotes</a></li>
+                        <li><a class="num_comments" href="">Comments</a></li>
+                        <li><a class="score" href="">Score</a></li>
+                        <li><a class="created" href="">Date</a></li>
+                    </ul>
+                </li>
             </ul>
-            <button class="btn btn-top">Top</button>
-            <button class="btn btn-lastDay">Past 24h</button>
+
         </nav>
         <section class="posts-wrapper"></section>
     </main>

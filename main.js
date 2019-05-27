@@ -61,11 +61,10 @@ fetch('https://www.reddit.com/r/funny.json')
             });
         }
 
-        const cleanData = (el) => {
-            // while (el.firstChild) el.removeChild(el.firstChild);
-            while (el.firstChild) {
-                el.removeChild(el.firstChild);
-                // element.forEach(item => item.parentNode.removeChild(element))
+        const cleanData = () => {
+            const postWrapper = document.querySelector('.posts-wrapper');
+            while (postWrapper.firstChild) {
+                postWrapper.removeChild(postWrapper.firstChild);
             }
         }
         showPosts(postsData.posts);
@@ -80,7 +79,7 @@ fetch('https://www.reddit.com/r/funny.json')
                 console.log(item.className);
                 getSortedData(`${item.className}`);
                 // document.querySelector('.posts-wrapper').innerHTML = '';
-                cleanData(document.querySelector('.posts-wrapper'));
+                cleanData();
                 showPosts(postsData.posts);
                 toggleSubMenu();
             })
@@ -93,7 +92,7 @@ fetch('https://www.reddit.com/r/funny.json')
                 return prev.ratio > current.ratio ? prev : current;
             })
             console.log(topPost);
-            cleanData(document.querySelector('.posts-wrapper'));
+            cleanData();
             createPost(topPost);
         }
 
@@ -107,15 +106,27 @@ fetch('https://www.reddit.com/r/funny.json')
                 return item.created > previousDay;
             })
             console.log(freshPosts);
-            cleanData(document.querySelector('.posts-wrapper'));
+            cleanData();
             showPosts(freshPosts);
         }
 
 
+        document.querySelector('.btn-home').addEventListener('click', (e) => {
+            e.preventDefault();
+            cleanData();
+            getSortedData('created');
+            showPosts(postsData.posts);
+        })
 
+        document.querySelector('.btn-top').addEventListener('click', (e) => {
+            e.preventDefault();
+            pickTopPost()
+        });
 
-        document.querySelector('.btn-top').addEventListener('click', pickTopPost);
-        document.querySelector('.btn-lastDay').addEventListener('click', sortLastDay);
+        document.querySelector('.btn-lastDay').addEventListener('click', (e) => {
+            e.preventDefault();
+            sortLastDay()
+        });
 
     })
     .catch(error => {
@@ -129,4 +140,7 @@ fetch('https://www.reddit.com/r/funny.json')
 const toggleSubMenu = () => {
     document.querySelector('.options').classList.toggle('show');
 }
-document.querySelector('.btn-sort').addEventListener('click', toggleSubMenu)
+document.querySelector('.btn-sort').addEventListener('click', (e) => {
+    e.preventDefault();
+    toggleSubMenu()
+});

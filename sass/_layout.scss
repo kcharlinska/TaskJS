@@ -3,15 +3,6 @@
     min-height: 100vh;
     background-color: $app-bgc;
 
-    .menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: $menu-height;
-        background-color: $menu-bgc;
-    }
-
     .posts-wrapper {
         margin-top: $menu-height;
         padding: 10px 0;
@@ -38,37 +29,75 @@
             color: $ad-font-color;
         }
     }
-
 }
 
-.btn {
-    height: 100%;
-    width: calc(100% / 4);
-    font-size: 1rem;
-    text-transform: uppercase;
-    border: none;
-    background-color: inherit;
-}
 
-.options {
-    display: none;
-    position: absolute;
-    top: $menu-height;
+.menu {
+    position: fixed;
+    top: 0;
     left: 0;
-    background-color: inherit;
-    font-size: .9rem;
-}
+    width: 100%;
+    height: $menu-height;
+    background-color: $menu-bgc;
 
-.show {
-    display: block;
-}
+    .menu-wrapper {
+        display: flex;
+        height: 100%;
+        list-style: none;
 
-.options li {
-    padding: 5px 10px;
-}
+        li {
+            width: 25%;
+            height: 100%;
 
-.options a {
-    text-decoration: none;
-    text-transform: uppercase;
-    color: $font-color;
+            .btn {
+                background-color: inherit;
+                line-height: $menu-height;
+
+                &:hover {
+                    background-color: $hover-bgc;
+                }
+            }
+
+        }
+
+        .options {
+            display: none;
+            position: absolute;
+            top: $menu-height;
+            right: 0;
+            background-color: $menu-bgc;
+            font-size: .9rem;
+            list-style: none;
+            border-radius: 4px;
+            border: 1px solid $menu-border;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .options li {
+            width: 100%;
+        }
+
+        .options a {
+            padding: 5px 12px;
+
+            &:hover {
+                background-color: $hover-bgc;
+            }
+        }
+
+    }
+
+    a {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $font-color;
+        font-weight: 600;
+        display: block;
+        width: 100%;
+        text-align: center;
+        height: 100%;
+    }
 }
