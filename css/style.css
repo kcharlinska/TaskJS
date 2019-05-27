@@ -105,7 +105,7 @@ body {
   background-color: #fff;
 }
 
-.menu .menu-wrapper {
+.menu-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -113,21 +113,21 @@ body {
   list-style: none;
 }
 
-.menu .menu-wrapper li {
+.menu-wrapper li {
   width: 25%;
   height: 100%;
 }
 
-.menu .menu-wrapper li .btn {
+.menu-wrapper li .btn {
   background-color: inherit;
   line-height: 60px;
 }
 
-.menu .menu-wrapper li .btn:hover {
+.menu-wrapper li .btn:hover {
   background-color: #e7f4ff;
 }
 
-.menu .menu-wrapper .options {
+.menu-wrapper .options {
   display: none;
   position: absolute;
   top: 60px;
@@ -139,19 +139,19 @@ body {
   border: 1px solid #d8d8d8;
 }
 
-.menu .menu-wrapper .show {
+.menu-wrapper .show {
   display: block;
 }
 
-.menu .menu-wrapper .options li {
+.menu-wrapper .options li {
   width: 100%;
 }
 
-.menu .menu-wrapper .options a {
+.menu-wrapper .options a {
   padding: 5px 12px;
 }
 
-.menu .menu-wrapper .options a:hover {
+.menu-wrapper .options a:hover {
   background-color: #e7f4ff;
 }
 

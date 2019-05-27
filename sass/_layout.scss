@@ -63,7 +63,7 @@
     height: $menu-height;
     background-color: $menu-bgc;
 
-    .menu-wrapper {
+    &-wrapper {
         display: flex;
         height: 100%;
         list-style: none;
