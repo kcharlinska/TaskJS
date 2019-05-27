@@ -25,6 +25,11 @@ fetch('https://www.reddit.com/r/funny.json')
         postsData.count = postsData.posts.length;
         console.log(postsData);
 
+        const formatDate = (date) => {
+            const addZero = (n) => (n <= 9) ? "0" + n : n;
+            return `${addZero(date.getDate())}.${addZero((date.getMonth() + 1))}.${date.getFullYear()} ${addZero(date.getHours())}:${addZero(date.getMinutes())}:${addZero(date.getSeconds())}`;
+        }
+
         const createPost = (item) => {
             const post = document.createElement('article');
             document.querySelector('.posts-wrapper').appendChild(post);
@@ -36,7 +41,7 @@ fetch('https://www.reddit.com/r/funny.json')
             const date = document.createElement('div');
             post.appendChild(date);
             date.className = 'created';
-            date.textContent = item.created;
+            date.textContent = formatDate(item.created);
             const txt = document.createElement('div');
             post.appendChild(txt);
             txt.className = 'txt';
