@@ -11,7 +11,6 @@ const getPosts = () => {
             }
         })
         .then(data => {
-            console.log(data)
             const postsData = new Object();
             postsData.posts = [];
             data.data.children.forEach(item => {
@@ -24,7 +23,6 @@ const getPosts = () => {
                 })
             });
             postsData.count = postsData.posts.length;
-            console.log(postsData);
 
             const createPost = (item) => {
                 const post = document.createElement('article');
@@ -76,7 +74,6 @@ const getPosts = () => {
                         highestRatio.push(postsData.posts[i]);
                     }
                 }
-                console.log(highestRatio);
                 if (highestRatio.length >= 2) highestRatio.reduce((prev, current) => {
                     return prev.created > current.created ? prev : current;
                 })
@@ -88,14 +85,10 @@ const getPosts = () => {
 
             const sortLastDay = () => {
                 const actualDate = new Date()
-                console.log(actualDate);
                 const previousDay = actualDate - 60 * 60 * 24 * 1000;
-                console.log(previousDay);
-                console.log(new Date(previousDay));
                 const freshPosts = postsData.posts.filter((item) => {
                     return item.created > previousDay;
                 })
-                console.log(freshPosts);
                 cleanData();
                 showPosts(freshPosts);
             }
@@ -103,9 +96,7 @@ const getPosts = () => {
             document.querySelectorAll('.options a').forEach(item => {
                 item.addEventListener('click', (e) => {
                     e.preventDefault();
-                    console.log(item.className);
                     getSortedData(`${item.className}`);
-                    // document.querySelector('.posts-wrapper').innerHTML = '';
                     cleanData();
                     showPosts(postsData.posts);
                     toggleSubMenu();

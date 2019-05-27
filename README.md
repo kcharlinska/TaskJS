@@ -1,5 +1,5 @@
 # WebApp
-> > Simple WebApp using Reddit API to display and manage pack of posts.
+> > Simple WebApp using Reddit API to display and manage pack of posts. Project created as a recruitment task for internship.
 
 ## Technologies
 * HTML5
@@ -18,6 +18,3 @@ Here is a working live demo:  https://kcharlinska.github.io/TaskJS/
 
 ## To-do list:
 * Unit-tests
-
-## Inspiration
-Project based on recruitment internship task.
