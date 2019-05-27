@@ -16,3 +16,14 @@ $menu-border: #d8d8d8;
 
 // Sizes
 $menu-height: 60px;
+
+// ----- BREAKPOINTS -----
+
+// Mobile phones
+$screen-sm-min: 599px;
+// Tablets and small desktops
+$screen-md-min: 826px;
+// Large tablets and desktops
+$screen-lg-min: 1024px;
+// Large desktops
+$screen-xl-min: 1440px;
