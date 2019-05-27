@@ -67,13 +67,24 @@ const getPosts = () => {
                 postsData.posts.forEach(item => {
                     item.ratio = item.upvotes / item.num_comments
                 })
-                const topPost = postsData.posts.reduce((prev, current) => {
-                    return prev.ratio > current.ratio ? prev : current;
+
+                let highestRatio = [];
+                postsData.posts.sort((a, b) => a.ratio - b.ratio);
+                highestRatio.push(postsData.posts[postsData.posts.length - 1]);
+                for (let i = 0; i < postsData.posts.length - 1; i++) {
+                    if (highestRatio[0].ratio === postsData.posts[i].ratio) {
+                        highestRatio.push(postsData.posts[i]);
+                    }
+                }
+                console.log(highestRatio);
+                if (highestRatio.length >= 2) highestRatio.reduce((prev, current) => {
+                    return prev.created > current.created ? prev : current;
                 })
-                console.log(topPost);
+                const topPost = highestRatio[0];
                 cleanData();
                 createPost(topPost);
             }
+
 
             const sortLastDay = () => {
                 const actualDate = new Date()

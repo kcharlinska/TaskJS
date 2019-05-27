@@ -110,6 +110,8 @@ body {
   width: 100%;
   height: 60px;
   background-color: #fff;
+  -webkit-box-shadow: 0 1px 1px -1px #d8d8d8;
+          box-shadow: 0 1px 1px -1px #d8d8d8;
 }
 
 .menu-wrapper {
