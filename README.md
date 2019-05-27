@@ -5,8 +5,8 @@
 * HTML5
 * CSS3 (SASS)
 * JavaScript
-* [Reddit API] (https://www.reddit.com/dev/api/)
-* [Font Awesome] (https://fontawesome.com)
+* [Reddit API](https://www.reddit.com/dev/api/)
+* [Font Awesome](https://fontawesome.com)
 
 ## Demo
 Here is a working live demo:  https://kcharlinska.github.io/TaskJS/
